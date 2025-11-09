@@ -1,0 +1,719 @@
+/* ========================================
+   CLIPPER WEB DESIGN - STYLE.CSS
+   Mobile-First Responsive Design
+   ======================================== */
+
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #1a2332;
+    background-color: #ffffff;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #0f1c2e;
+}
+
+h1 {
+    font-size: 1.875rem;
+}
+
+h2 {
+    font-size: 1.625rem;
+}
+
+h3 {
+    font-size: 1.375rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #1e5a8e;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
+/* ========================================
+   LAYOUT CONTAINERS
+   ======================================== */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.content-narrow {
+    max-width: 800px;
+}
+
+/* ========================================
+   HEADER & NAVIGATION
+   ======================================== */
+
+.site-header {
+    background-color: #0f1c2e;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: #3498db;
+}
+
+.mobile-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    background-color: #ffffff;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    background-color: #ffffff;
+    position: absolute;
+    transition: transform 0.3s ease;
+}
+
+.hamburger::before {
+    top: -0.5rem;
+}
+
+.hamburger::after {
+    bottom: -0.5rem;
+}
+
+.mobile-toggle[aria-expanded="true"] .hamburger {
+    background-color: transparent;
+}
+
+.mobile-toggle[aria-expanded="true"] .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.mobile-toggle[aria-expanded="true"] .hamburger::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+}
+
+.nav-menu {
+    display: none;
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #0f1c2e;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-menu.active {
+    display: block;
+}
+
+.nav-menu li {
+    margin: 0;
+}
+
+.nav-menu a {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background-color: #1e5a8e;
+    color: #ffffff;
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+
+.hero {
+    background: linear-gradient(135deg, #0f1c2e 0%, #1e5a8e 100%);
+    color: #ffffff;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+.hero-subhead {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================================
+   BUTTONS & CTAs
+   ======================================== */
+
+.cta-button {
+    display: inline-block;
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 0.875rem 1.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.cta-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+.tier-button {
+    display: block;
+    width: 100%;
+    background-color: #1e5a8e;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+.tier-button:hover {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+
+/* ========================================
+   FEATURES SECTION
+   ======================================== */
+
+.features {
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.feature-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.feature-card {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h3 {
+    color: #1e5a8e;
+    margin-bottom: 0.75rem;
+}
+
+/* ========================================
+   PHILOSOPHY SECTION
+   ======================================== */
+
+.philosophy {
+    padding: 3rem 0;
+}
+
+.philosophy h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.philosophy p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+
+.cta-section {
+    background: linear-gradient(135deg, #1e5a8e 0%, #3498db 100%);
+    color: #ffffff;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.cta-section h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+}
+
+/* ========================================
+   PAGE HEADER
+   ======================================== */
+
+.page-header {
+    background-color: #0f1c2e;
+    color: #ffffff;
+    padding: 2.5rem 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    color: #ffffff;
+}
+
+/* ========================================
+   PRICING SECTION
+   ======================================== */
+
+.pricing {
+    padding: 3rem 0;
+}
+
+.pricing-table {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.tier-card {
+    background-color: #ffffff;
+    border: 2px solid #e0e6ed;
+    border-radius: 8px;
+    padding: 1.75rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.tier-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.tier-card.featured {
+    border-color: #3498db;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -12px;
+    right: 1.5rem;
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 0.375rem 0.875rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.tier-card h2 {
+    color: #1e5a8e;
+    margin-bottom: 0.5rem;
+}
+
+.tier-focus {
+    font-size: 1rem;
+    color: #5a6c7d;
+    margin-bottom: 1rem;
+}
+
+.tier-price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0f1c2e;
+    margin-bottom: 1.5rem;
+}
+
+.tier-details h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    margin-top: 1rem;
+}
+
+.tier-details ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.tier-details li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.tier-details li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #3498db;
+    font-weight: 700;
+}
+
+.hosting-requirement {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+.hosting-requirement h2 {
+    margin-bottom: 1rem;
+}
+
+/* ========================================
+   AUDIT SECTIONS
+   ======================================== */
+
+.audit-value {
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+}
+
+.audit-value h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.value-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.value-item {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.value-item h3 {
+    color: #1e5a8e;
+    margin-bottom: 0.75rem;
+}
+
+.audit-form-section {
+    padding: 3rem 0;
+}
+
+.form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-wrapper h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.form-wrapper > p {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* ========================================
+   FORMS
+   ======================================== */
+
+.audit-form,
+.contact-form {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #0f1c2e;
+}
+
+.required {
+    color: #e74c3c;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #d1d8e0;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-actions {
+    margin-top: 1.5rem;
+}
+
+.form-note {
+    font-size: 0.875rem;
+    color: #5a6c7d;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* ========================================
+   ABOUT CONTENT
+   ======================================== */
+
+.about-content {
+    padding: 3rem 0;
+}
+
+.about-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* ========================================
+   CONTACT PAGE
+   ======================================== */
+
+.contact-section {
+    padding: 3rem 0;
+}
+
+.contact-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.contact-info {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.contact-method {
+    margin-bottom: 1.5rem;
+}
+
+.contact-method h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+    color: #1e5a8e;
+}
+
+.contact-method a {
+    color: #1e5a8e;
+    font-weight: 600;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.site-footer {
+    background-color: #0f1c2e;
+    color: #ffffff;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+}
+
+/* ========================================
+   TABLET BREAKPOINT (768px+)
+   ======================================== */
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .mobile-toggle {
+        display: none;
+    }
+
+    .nav-menu {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .nav-menu li {
+        margin-left: 1.5rem;
+    }
+
+    .nav-menu a {
+        padding: 0.5rem 0;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+        background-color: transparent;
+        color: #3498db;
+    }
+
+    .hero {
+        padding: 5rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2.75rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .pricing-table {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .value-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr 1.5fr;
+    }
+}
+
+/* ========================================
+   DESKTOP BREAKPOINT (1024px+)
+   ======================================== */
+
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    .hero {
+        padding: 6rem 0;
+    }
+
+    .hero h1 {
+        font-size: 3.25rem;
+    }
+
+    .hero-subhead {
+        font-size: 1.25rem;
+    }
+
+    .features,
+    .pricing,
+    .audit-value,
+    .audit-form-section,
+    .about-content,
+    .contact-section,
+    .philosophy,
+    .cta-section {
+        padding: 4rem 0;
+    }
+}
