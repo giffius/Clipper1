@@ -26,13 +26,13 @@
         }
         
         :root {
-            /* Color Palette - Professional Locksmith Theme */
-            --primary-color: #1e3a5f;        /* Deep Navy Blue - Trust & Security */
-            --secondary-color: #c9a961;      /* Brass Gold - Traditional Metalwork */
-            --accent-color: #e74c3c;         /* Emergency Red */
-            --dark-bg: #0f1419;              /* Near Black */
+            /* Color Palette - Red & Dark Gray Theme */
+            --primary-color: #2d3436;        /* Dark Charcoal Gray */
+            --secondary-color: #d63031;      /* Bold Red */
+            --accent-color: #e74c3c;         /* Bright Red Accent */
+            --dark-bg: #1a1a1a;              /* Near Black */
             --light-bg: #f8f9fa;             /* Off White */
-            --text-dark: #2c3e50;            /* Dark Gray */
+            --text-dark: #2d3436;            /* Dark Gray */
             --text-light: #ffffff;           /* White */
             --border-color: #dfe6e9;         /* Light Gray */
             
@@ -68,7 +68,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(30, 58, 95, 0.95);
+            background-color: rgba(45, 52, 54, 0.95);
             backdrop-filter: blur(10px);
             padding: 15px 0;
             z-index: 1000;
@@ -168,7 +168,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(30, 58, 95, 0.95) 0%, rgba(15, 20, 25, 0.95) 100%),
+            background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%),
                         url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2000') center/cover no-repeat;
             background-attachment: fixed;
             color: var(--text-light);
@@ -186,7 +186,7 @@
         .hero-badge {
             display: inline-block;
             background-color: var(--secondary-color);
-            color: var(--dark-bg);
+            color: white;
             padding: 8px 20px;
             border-radius: 30px;
             font-weight: 600;
@@ -231,14 +231,14 @@
         
         .btn-primary {
             background-color: var(--secondary-color);
-            color: var(--dark-bg);
-            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
+            color: white;
+            box-shadow: 0 4px 15px rgba(214, 48, 49, 0.3);
         }
         
         .btn-primary:hover {
-            background-color: #d4b66f;
+            background-color: #c0392b;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(201, 169, 97, 0.4);
+            box-shadow: 0 6px 20px rgba(214, 48, 49, 0.4);
         }
         
         .btn-secondary {
@@ -399,7 +399,7 @@
         =================================== */
         #testimonials {
             padding: var(--section-padding);
-            background: linear-gradient(135deg, var(--primary-color) 0%, #2c5282 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #3d3d3d 100%);
             color: var(--text-light);
         }
         
@@ -539,7 +539,7 @@
             display: inline-block;
             padding: 12px 25px;
             background-color: var(--secondary-color);
-            color: var(--dark-bg);
+            color: white;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
@@ -547,7 +547,7 @@
         }
         
         .map-link:hover {
-            background-color: #d4b66f;
+            background-color: #c0392b;
             transform: translateY(-2px);
         }
         
@@ -636,7 +636,7 @@
         
         .mobile-btn-directions {
             background-color: var(--secondary-color);
-            color: var(--dark-bg);
+            color: white;
         }
         
         .mobile-btn:active {
