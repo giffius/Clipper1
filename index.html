@@ -15,13 +15,20 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
     
-    <!-- Preconnect for faster font loading -->
+    <!-- Preload and async load fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"></noscript>
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop" as="image" type="image/jpeg">
+    <script>
+    // Inline font loading optimization
+    if('fonts' in document){
+        document.fonts.load('1em Inter').then(()=>{
+            document.documentElement.classList.add('fonts-loaded');
+        });
+    }
+    </script>
     
     <style>
         /* ===================================
@@ -44,8 +51,8 @@
             --text-light: #ffffff;           /* White */
             --border-color: #dfe6e9;         /* Light Gray */
             
-            /* Typography */
-            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            /* Typography - System fonts first for instant rendering */
+            --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             
             /* Spacing */
             --section-padding: 80px 20px;
@@ -76,8 +83,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(45, 52, 54, 0.95);
-            backdrop-filter: blur(10px);
+            background-color: rgba(45, 52, 54, 0.98);
             padding: 15px 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -178,7 +184,7 @@
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%),
-                        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+                        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=70&w=800&auto=format&fit=crop&fm=webp') center/cover no-repeat;
             color: var(--text-light);
             text-align: center;
             padding: var(--section-padding);
@@ -231,7 +237,7 @@
             font-weight: 600;
             text-decoration: none;
             border-radius: 8px;
-            transition: all var(--transition-speed);
+            transition: transform 0.2s, box-shadow 0.2s;
             display: inline-block;
             border: none;
             cursor: pointer;
@@ -303,7 +309,7 @@
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all var(--transition-speed);
+            transition: transform 0.3s;
             will-change: transform;
         }
         
@@ -352,7 +358,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all var(--transition-speed);
+            transition: transform 0.3s;
             will-change: transform;
         }
         
@@ -413,6 +419,8 @@
             padding: var(--section-padding);
             background: linear-gradient(135deg, var(--primary-color) 0%, #3d3d3d 100%);
             color: var(--text-light);
+            content-visibility: auto;
+            contain-intrinsic-size: auto 600px;
         }
         
         #testimonials .section-title h2,
@@ -429,8 +437,7 @@
         }
         
         .testimonial-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.12);
             padding: 30px;
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -852,7 +859,7 @@
         <div class="services-grid">
             <!-- Residential Services -->
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=600&auto=format&fit=crop" alt="Residential Locksmith Services" class="service-image" loading="lazy" decoding="async" width="600" height="220">
+                <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=70&w=500&auto=format&fit=crop&fm=webp" alt="Residential Locksmith Services" class="service-image" loading="lazy" decoding="async" width="500" height="220">
                 <div class="service-content">
                     <h3>Residential Services</h3>
                     <p>Protect your home and family with our comprehensive residential locksmith services.</p>
@@ -869,7 +876,7 @@
 
             <!-- Commercial Services -->
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" alt="Commercial Locksmith Services" class="service-image" loading="lazy" decoding="async" width="600" height="220">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=70&w=500&auto=format&fit=crop&fm=webp" alt="Commercial Locksmith Services" class="service-image" loading="lazy" decoding="async" width="500" height="220">
                 <div class="service-content">
                     <h3>Commercial Services</h3>
                     <p>Secure your business with professional-grade commercial locksmith solutions.</p>
@@ -886,7 +893,7 @@
 
             <!-- Automotive Services -->
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=600&auto=format&fit=crop" alt="Automotive Locksmith Services" class="service-image" loading="lazy" decoding="async" width="600" height="220">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=70&w=500&auto=format&fit=crop&fm=webp" alt="Automotive Locksmith Services" class="service-image" loading="lazy" decoding="async" width="500" height="220">
                 <div class="service-content">
                     <h3>Automotive Services</h3>
                     <p>Get back on the road quickly with our expert automotive locksmith services.</p>
@@ -1091,7 +1098,7 @@
         });
 
         // ===================================
-        // Sticky Mobile Bar - Hide at Footer (Optimized)
+        // Combined Scroll Handler (Optimized for Performance)
         // ===================================
         const stickyBar = document.getElementById('stickyBar');
         const footer = document.querySelector('footer');
@@ -1109,22 +1116,43 @@
             };
         }
 
-        const handleScroll = debounce(() => {
-            const footerTop = footer.offsetTop;
-            const scrollPosition = window.scrollY + window.innerHeight;
+        // Combined scroll handler - reduces reflows
+        const handleCombinedScroll = debounce(() => {
+            const scrollY = window.scrollY;
+            const innerHeight = window.innerHeight;
+            const innerWidth = window.innerWidth;
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
             
-            // Hide sticky bar when reaching footer
+            // Handle sticky bar visibility
+            const footerTop = footer.offsetTop;
+            const scrollPosition = scrollY + innerHeight;
+            
             if (scrollPosition >= footerTop) {
                 stickyBar.style.display = 'none';
-            } else {
-                // Show on mobile screens only
-                if (window.innerWidth <= 768) {
-                    stickyBar.style.display = 'block';
-                }
+            } else if (innerWidth <= 768) {
+                stickyBar.style.display = 'block';
             }
-        }, 10);
+            
+            // Handle navigation highlighting
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= (sectionTop - navbarHeight - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }, 15);
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('scroll', handleCombinedScroll, { passive: true });
 
         // ===================================
         // Smooth Scroll for All Internal Links
@@ -1150,32 +1178,6 @@
             });
         });
 
-        // ===================================
-        // Active Navigation Highlighting on Scroll (Optimized)
-        // ===================================
-        const handleNavHighlight = debounce(() => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            const navbarHeight = document.querySelector('.navbar').offsetHeight;
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (window.scrollY >= (sectionTop - navbarHeight - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        }, 10);
-
-        window.addEventListener('scroll', handleNavHighlight, { passive: true });
     </script>
 </body>
 </html>
