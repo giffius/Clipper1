@@ -5,15 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Simmons Lock & Key Inc. - Serving Grand Junction & the Grand Valley since 1945. Expert residential, commercial & automotive locksmith services. Family-owned with hometown values.">
     <meta name="keywords" content="locksmith, Grand Junction, Colorado, lock and key, residential locksmith, commercial locksmith, automotive locksmith, key duplication, lock installation">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simmons Lock & Key Inc. | Grand Junction Locksmith Since 1945</title>
+    
+    <!-- DNS Prefetch for external domains -->
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://www.google.com">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Preconnect for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop" as="image" type="image/jpeg">
     
     <style>
         /* ===================================
@@ -73,6 +81,7 @@
             padding: 15px 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            will-change: transform;
         }
         
         .nav-container {
@@ -169,8 +178,7 @@
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%),
-                        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2000') center/cover no-repeat;
-            background-attachment: fixed;
+                        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
             color: var(--text-light);
             text-align: center;
             padding: var(--section-padding);
@@ -259,6 +267,7 @@
         #features {
             padding: var(--section-padding);
             background-color: var(--light-bg);
+            contain: layout style paint;
         }
         
         .section-title {
@@ -295,6 +304,7 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             transition: all var(--transition-speed);
+            will-change: transform;
         }
         
         .feature-card:hover {
@@ -326,6 +336,7 @@
         #services {
             padding: var(--section-padding);
             background-color: white;
+            contain: layout style paint;
         }
         
         .services-grid {
@@ -342,6 +353,7 @@
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             transition: all var(--transition-speed);
+            will-change: transform;
         }
         
         .service-card:hover {
@@ -448,6 +460,7 @@
         #contact {
             padding: var(--section-padding);
             background-color: var(--light-bg);
+            contain: layout style paint;
         }
         
         .contact-container {
@@ -839,7 +852,7 @@
         <div class="services-grid">
             <!-- Residential Services -->
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=800" alt="Residential Locksmith Services" class="service-image">
+                <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=600&auto=format&fit=crop" alt="Residential Locksmith Services" class="service-image" loading="lazy" decoding="async" width="600" height="220">
                 <div class="service-content">
                     <h3>Residential Services</h3>
                     <p>Protect your home and family with our comprehensive residential locksmith services.</p>
@@ -856,7 +869,7 @@
 
             <!-- Commercial Services -->
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" alt="Commercial Locksmith Services" class="service-image">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" alt="Commercial Locksmith Services" class="service-image" loading="lazy" decoding="async" width="600" height="220">
                 <div class="service-content">
                     <h3>Commercial Services</h3>
                     <p>Secure your business with professional-grade commercial locksmith solutions.</p>
@@ -873,7 +886,7 @@
 
             <!-- Automotive Services -->
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=800" alt="Automotive Locksmith Services" class="service-image">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=600&auto=format&fit=crop" alt="Automotive Locksmith Services" class="service-image" loading="lazy" decoding="async" width="600" height="220">
                 <div class="service-content">
                     <h3>Automotive Services</h3>
                     <p>Get back on the road quickly with our expert automotive locksmith services.</p>
@@ -1078,12 +1091,25 @@
         });
 
         // ===================================
-        // Sticky Mobile Bar - Hide at Footer
+        // Sticky Mobile Bar - Hide at Footer (Optimized)
         // ===================================
         const stickyBar = document.getElementById('stickyBar');
         const footer = document.querySelector('footer');
 
-        window.addEventListener('scroll', () => {
+        // Debounce function for better scroll performance
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        const handleScroll = debounce(() => {
             const footerTop = footer.offsetTop;
             const scrollPosition = window.scrollY + window.innerHeight;
             
@@ -1096,7 +1122,9 @@
                     stickyBar.style.display = 'block';
                 }
             }
-        });
+        }, 10);
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
         // ===================================
         // Smooth Scroll for All Internal Links
@@ -1123,9 +1151,9 @@
         });
 
         // ===================================
-        // Active Navigation Highlighting on Scroll
+        // Active Navigation Highlighting on Scroll (Optimized)
         // ===================================
-        window.addEventListener('scroll', () => {
+        const handleNavHighlight = debounce(() => {
             let current = '';
             const sections = document.querySelectorAll('section');
             const navbarHeight = document.querySelector('.navbar').offsetHeight;
@@ -1145,7 +1173,9 @@
                     link.classList.add('active');
                 }
             });
-        });
+        }, 10);
+
+        window.addEventListener('scroll', handleNavHighlight, { passive: true });
     </script>
 </body>
 </html>
